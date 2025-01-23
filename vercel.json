@@ -1,34 +1,8 @@
 {
-    "version": 2,
-    "name": "stock-management-system",
-    "builds": [
-        {
-            "src": "app.js",
-            "use": "@vercel/node"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "app.js"
-        }
-    ],
-    "env": {
-        "MONGODB_URI": "@mongodb_connection_string",
-        "JWT_SECRET": "@jwt_secret",
-        "SENDGRID_API_KEY": "@sendgrid_api_key",
-        "ADMIN_EMAIL": "@admin_email",
-        "SENDER_EMAIL": "@sender_email"
-    },
-    "headers": [
-        {
-            "source": "/api/(.*)",
-            "headers": [
-                { "key": "Access-Control-Allow-Credentials", "value": "true" },
-                { "key": "Access-Control-Allow-Origin", "value": "*" },
-                { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
-                { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" }
-            ]
-        }
-    ]
+  "rewrites": [
+    {
+      "source": "/api/:path*",  // Match all /api routes
+      "destination": "stockmanagement-six.vercel.app/api/:path*" // Redirect to your backend
+    }
+  ]
 }
