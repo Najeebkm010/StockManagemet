@@ -2,28 +2,22 @@
     "version": 2,
     "builds": [
       {
-        "src": "app.js",
+        "src": "src/app.js",
         "use": "@vercel/node"
-      },
-      {
-        "src": "public/**",
-        "use": "@vercel/static"
       }
     ],
     "routes": [
       {
-        "src": "/public/(.*)",
-        "dest": "/public/$1"
-      },
-      {
-        "src": "/api/(.*)",
-        "dest": "/app.js"
+        "src": "/(.*)",
+        "dest": "src/app.js"
       }
     ],
     "env": {
-      "NODE_ENV": "production",
-      "DB_CONNECTION": "@your-database-connection-string",
-      "SECRET_KEY": "@your-secret-key"
+      "MONGODB_URI": "@mongodb_uri",
+      "JWT_SECRET": "@jwt_secret",
+      "SENDGRID_API_KEY": "@sendgrid_api_key",
+      "ADMIN_EMAIL": "@admin_email",
+      "SENDER_EMAIL": "@sender_email"
     }
   }
   

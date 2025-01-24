@@ -33,6 +33,14 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+// Handle production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('public'));
+}
+
+module.exports = app;
