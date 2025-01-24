@@ -6,16 +6,12 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "redirects": [
     {
-      "src": "/(.*)",
-      "dest": "src/app.js"
+      "source": "/",
+      "destination": "/api"
     }
   ],
-  "env": {
-    "NODE_VERSION": "18.x"
-  },
-  "public": true,
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -41,6 +37,12 @@
       ]
     }
   ],
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "env": {
+    "NODE_VERSION": "18.x"
+  },
+  "public": true,
   "github": {
     "silent": true
   }
