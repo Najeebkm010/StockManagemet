@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!token) {
         window.location.href = '/index.html';
-        return;
+        return; 
     }
 
     // Load initial data

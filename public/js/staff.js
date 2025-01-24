@@ -1,6 +1,7 @@
 // Initialize current requests array
 let currentRequests = [];
 
+
 document.addEventListener('DOMContentLoaded', () => {
     // Check if user is logged in and is staff
     const token = localStorage.getItem('token');
