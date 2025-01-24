@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('reportForm').addEventListener('submit', handleGenerateReport);
 });
 
+const API_BASE_URL = `${window.location.origin}`;
+
 async function loadStockRequests() {
     try {
-        const response = await fetch('http://localhost:3000/api/admin/requests', {
+        const response = await fetch(`${API_BASE_URL}/api/admin/requests`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -57,7 +59,7 @@ async function loadStockRequests() {
 
 async function loadStaffList() {
     try {
-        const response = await fetch('http://localhost:3000/api/admin/staff', {
+        const response = await fetch(`${API_BASE_URL}/api/admin/staff`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -85,7 +87,7 @@ async function deleteStaff(staffId) {
     if (!confirmation) return;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/admin/staff/${staffId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/admin/staff/${staffId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -112,7 +114,7 @@ async function handleAddStaff(e) {
     const password = document.getElementById('newStaffPassword').value;
 
     try {
-        const response = await fetch('http://localhost:3000/api/admin/staff', {
+        const response = await fetch(`${API_BASE_URL}/api/admin/staff`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -140,7 +142,7 @@ async function handleAddStaff(e) {
 
 async function updateStatus(requestId, status) {
     try {
-        const response = await fetch(`http://localhost:3000/api/admin/requests/${requestId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/admin/requests/${requestId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -168,7 +170,7 @@ async function handleGenerateReport(e) {
     const endDate = document.getElementById('endDate').value;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/admin/reports?startDate=${startDate}&endDate=${endDate}`, {
+        const response = await fetch(`${API_BASE_URL}/api/admin/reports?startDate=${startDate}&endDate=${endDate}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }

@@ -99,12 +99,14 @@ function deleteRequest(index) {
     }
 }
 
+const API_BASE_URL = `${window.location.origin}`;
+
 // Submit all current requests
 async function handleSubmitAll() {
     try {
         // Submit each request
         for (const request of currentRequests) {
-            const response = await fetch('http://localhost:3000/api/stock/request', {
+            const response = await fetch(`${API_BASE_URL}/api/stock/request`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -145,7 +147,7 @@ async function sendEmailWithRequests() {
         // const newRequests = currentRequests; // Newly submitted requests
         
         // Fetch pending requests
-        const pendingResponse = await fetch('http://localhost:3000/api/stock/requests?status=pending', {
+        const pendingResponse = await fetch(`${API_BASE_URL}/api/stock/requests?status=pending`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -163,7 +165,7 @@ async function sendEmailWithRequests() {
             
 
         // Send email
-        const emailResponse = await fetch('http://localhost:3000/api/send-email/sendEmail', {
+        const emailResponse = await fetch(`${API_BASE_URL}/api/send-email/sendEmail`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -189,7 +191,7 @@ async function sendEmailWithRequests() {
 // Load previous requests
 async function loadPreviousRequests() {
     try {
-        const response = await fetch('http://localhost:3000/api/stock/requests', {
+        const response = await fetch(`${API_BASE_URL}/api/stock/requests`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
