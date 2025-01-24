@@ -2,43 +2,46 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/src/app.js",
+      "src": "src/app.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "frontend/public/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "backend/src/app.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "frontend/public/$1"
+      "dest": "src/app.js"
     }
   ],
   "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "JWT_SECRET": "@jwt_secret",
-    "SENDGRID_API_KEY": "@sendgrid_api_key",
-    "ADMIN_EMAIL": "@admin_email",
-    "SENDER_EMAIL": "@sender_email"
+    "NODE_VERSION": "18.x"
   },
+  "public": true,
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/api/(.*)",
+      "destination": "/src/routes/$1"
     }
-  ]
-}
-{
-   "rewrites": [
+  ],
+  "headers": [
     {
-      "source": "/api/:path*",  // Match all /api routes
-      "destination": "stockmanagement-six.vercel.app/api/:path*" // Redirect to your backend
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization"
+        }
+      ]
     }
-  ]
+  ],
+  "github": {
+    "silent": true
+  }
 }
