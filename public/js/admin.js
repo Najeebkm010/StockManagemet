@@ -216,7 +216,7 @@ async function handleGenerateReport(e) {
                             <th>Date</th>
                             <th>Category</th>
                             <th>Description</th>
-                            <th>Quantity(kg)</th>
+                            <th>Quantity</th>
                             <th>Priority</th>
                             <th>Status</th>
                             <th>Staff</th>
