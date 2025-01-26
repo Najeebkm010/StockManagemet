@@ -9,7 +9,7 @@ const sendStockRequestEmail = async (staffName, newRequests, pendingRequests) =>
 *Request #${index + 1}*
 • Category: ${req.category}
 • Description: ${req.description}
-• Quantity: ${req.quantity} kg
+• Quantity: ${req.quantity}
 ${req.submittedAt ? `• Submitted on: ${new Date(req.submittedAt).toLocaleString()}` : ''}
     `).join('\n\n');
   };
