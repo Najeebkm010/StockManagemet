@@ -7,7 +7,7 @@ const stockRequestSchema = new mongoose.Schema({
     required: true
   },
   description: { type: String, required: true },
-  quantity: { type: Number, required: true },
+  quantity: { type: String, required: true },
   priority: String,
   status: {
     type: String,
