@@ -28,7 +28,7 @@ async function handleAddRequest(e) {
 
     const category = document.getElementById('category').value;
     const description = document.getElementById('description').value;
-    const quantity = parseFloat(document.getElementById('quantity').value);
+    const quantity = document.getElementById('quantity').value;
     const priority = document.getElementById('priority').value;
 
     const newRequest = {
